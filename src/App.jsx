@@ -5,8 +5,10 @@ import Sphere from "./components/Sphere";
 import Cube from "./components/Cube";
 import Torus from "./components/Torus";
 import TorusKnot from "./components/TorusKnot";
+import { OrbitControls } from "@react-three/drei";
 
-
+//https://github.com/pmndrs/drei?tab=readme-ov-file#cameracontrols
+//https://youtu.be/vTfMjI4rVSI?si=JsQq57kKWo1wLOwT 
 
 const App = () => {
 
@@ -42,7 +44,7 @@ const App = () => {
       <Canvas>
         <directionalLight position={[1, 1, 2]} />
         <Sphere position={[0, 1, 0]} size={[1.5, 12, 30]} color={'blue'}  wireframe={true}/>
-      
+      <OrbitControls />
       </Canvas>
 
       <h1>Torus</h1>
