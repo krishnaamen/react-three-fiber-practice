@@ -1,8 +1,9 @@
-import React,{useRef} from 'react'
+import React,{useRef, useState} from 'react'
 import { useFrame } from '@react-three/fiber';
 
 
     const Sphere = ({ position, size, color,wireframe }) => {
+        const [isHovered, setIsHovered] = useState(false);
         const ref = useRef();
         useFrame((state, delta) => {
           ref.current.rotation.y += delta 
@@ -14,9 +15,16 @@ import { useFrame } from '@react-three/fiber';
         })
       
         return (
-          <mesh position={position} ref={ref}>
+          <mesh 
+          position={position} 
+          ref={ref}
+          onPointerEnter={(e) => {e.stopPropagation(),setIsHovered(true)}}
+          onPointerLeave={() => {setIsHovered(false)}}
+          
+          
+          >
             <sphereGeometry args={size} />
-            <meshStandardMaterial color={color}  wireframe={wireframe} />
+            <meshStandardMaterial color={isHovered ? "orange": "blue"}  wireframe={wireframe} />
           </mesh>
       
         )

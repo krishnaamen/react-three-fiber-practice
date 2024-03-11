@@ -34,7 +34,7 @@ const App = () => {
       <Canvas>
         <directionalLight position={[2, 1, 10]} />
         <Sphere position={[1, 0, 0]} size={[1.5, 100, 30]} color={'red'}  wireframe={false}/>
-        <Sphere position={[1, 0, 0]} size={[1.5, 10, 30]} color={'blue'}  wireframe={true}/>
+        <Sphere position={[1, 0, 0]} size={[1.5, 100, 30]} color={'blue'}  wireframe={true}/>
        
       </Canvas>
 
