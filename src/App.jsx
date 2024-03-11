@@ -32,7 +32,7 @@ const App = () => {
 
 
       </Canvas >
-      <h1>Sphere mix</h1>
+      <h1>Sphere mix(click the sphere to see the interaction on it </h1>
       <Canvas>
         <directionalLight position={[2, 1, 10]} />
         <Sphere position={[1, 0, 0]} size={[1.5, 100, 30]} color={'red'} wireframe={false} />
@@ -54,7 +54,7 @@ const App = () => {
       </Canvas>
 
       <h1>TorusKnot</h1>
-      // canvas should be adjusted
+    
       <Canvas>
         <directionalLight position={[2, 1, 10]} />
         <TorusKnot position={[1, 0, 0]} size={[1, 0.1, 30, 30]} color={'blue'} />
