@@ -1,79 +1,20 @@
-import { Canvas, useFrame } from "@react-three/fiber"
-import { useRef } from "react"
+import { Canvas } from "@react-three/fiber"
 
-
-const Sphere = ({ position, size, color }) => {
-  const ref = useRef();
-  useFrame((state, delta) => {
-    ref.current.rotation.x += delta
-    ref.current.rotation.y += delta
-    ref.current.position.x = Math.sin(state.clock.elapsedTime) * 2;
-    ref.current.position.y = Math.sin(state.clock.elapsedTime) * 2;
-
-
-  })
-
-  return (
-    <mesh position={position} ref={ref}>
-      <sphereGeometry args={size} />
-      <meshStandardMaterial color={color} />
-    </mesh>
-
-  )
-}
-
-
-const Torus = ({ position, size, color }) => {
-  const ref = useRef();
-  useFrame((state, delta) => {
-    ref.current.rotation.x += delta
-    ref.current.rotation.y += delta
-    ref.current.position.x = Math.sin(state.clock.elapsedTime);
-    ref.current.position.z = Math.sin(state.clock.elapsedTime);
-
-
-  })
-
-  return (
-    <mesh position={position} ref={ref}>
-      <torusGeometry args={size} />
-      <meshStandardMaterial color={color} />
-    </mesh>
-
-  )
-}
+import './App.css';
+import Sphere from "./components/Sphere";
+import Cube from "./components/Cube";
+import Torus from "./components/Torus";
+import TorusKnot from "./components/TorusKnot";
 
 
 
-
-const Cube = ({ position, size, color }) => {
-  const ref = useRef()
-  useFrame((state, delta) => {
-    ref.current.rotation.x += delta
-    ref.current.rotation.y += delta
-    ref.current.position.z = Math.sin(state.clock.elapsedTime) * 2;
-
-  })
-
-  return (
-    <mesh position={position} ref={ref}>
-      <boxGeometry args={size} />
-
-      <meshStandardMaterial color={color} />
-
-    </mesh>
-  )
-}
-
-
-
-function App() {
+const App = () => {
 
 
   return (
-    <>
+    <div className="maindiv">
       <h1>Cube</h1>
-      <Canvas>
+      <Canvas >
 
         <directionalLight position={[0, 0, 2]} />
         <Cube position={[0, 0, 2]} size={[2, 2, 2]} color={'orange'} />
@@ -88,20 +29,35 @@ function App() {
 
 
 
-      </Canvas>
-      <h1>Sphere</h1>
+      </Canvas >
+      <h1>Sphere mix</h1>
       <Canvas>
         <directionalLight position={[2, 1, 10]} />
-        <Sphere position={[1, 0, 0]} size={[1.5, 30, 30]} color={'red'} />
+        <Sphere position={[1, 0, 0]} size={[1.5, 100, 30]} color={'red'}  wireframe={false}/>
+        <Sphere position={[1, 0, 0]} size={[1.5, 10, 30]} color={'blue'}  wireframe={true}/>
+       
+      </Canvas>
+
+      <h1>Sphere with wireframe true</h1>
+      <Canvas>
+        <directionalLight position={[1, 1, 2]} />
+        <Sphere position={[0, 1, 0]} size={[1.5, 12, 30]} color={'blue'}  wireframe={true}/>
+      
       </Canvas>
 
       <h1>Torus</h1>
       <Canvas>
         <directionalLight position={[2, 1, 10]} />
-        <Torus position={[1, 0, 0]} size={[1,0.1, 30, 30]} color={'blue'} />
+        <Torus position={[1, 0, 0]} size={[1, 0.1, 30, 30]} color={'blue'} />
       </Canvas>
 
-    </>
+      <h1>TorusKnot</h1>
+      <Canvas>
+        <directionalLight position={[2, 1, 10]} />
+        <TorusKnot position={[, 0, 0]} size={[1, 0.1, 30, 30]} color={'blue'} />
+      </Canvas>
+
+    </div>
   )
 }
 
